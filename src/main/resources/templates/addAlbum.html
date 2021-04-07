@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>songr</title>
+    <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+<form th:action="'/addAlbum' + '?_method=save'" method="POST">
+    <fieldset>
+        <legend>Add Album</legend>
+        <label for="title">Title Of Album</label>
+        <input type="text" name="title">
+
+        <label for="artist">Artist</label>
+        <input type="text" name="artist">
+
+        <label for="songCount">Number of Songs</label>
+        <input type="number" name="songCount">
+
+        <label for="length">Album Length (Minutes)</label>
+        <input type="decimal" name="length">
+
+        <label for="imgUrl">Image url</label>
+        <input type="text" name="imgUrl">
+        <input type="submit" value="Add Album">
+
+    </fieldset>
+</form>
+
+</body>
+</html>

@@ -1,15 +1,22 @@
 package com.andyagulue.songr;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.bind.annotation.PathVariable;
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 @Controller
 public class  SongrController {
+    @Autowired
+    public AlbumRepository albumRepository;
+
+
     static ArrayList<Album> album = new ArrayList<>();
     //(String Artist, String Title, int songCount, int length)
     static {
@@ -39,21 +46,43 @@ public class  SongrController {
 
     @GetMapping("/album")
     public String viewAlbum(Model m){
+        List<Album> library = albumRepository.findAll();
         m.addAttribute("albumList", album);
+       // m.addAttribute("albums", albumRepository.findAll());
         return "album.html";
     }
+
     @GetMapping("/")
     public String showSplash(){
         return "show-splash.html";
     }
+
+    @GetMapping("/addAlbum")
+    public String addAlbum(){
+
+        return "addAlbum.html";
+    }
+
+    @PostMapping("/addAlbum")
+    public RedirectView addAlbum(
+            String title,
+            String artist,
+            int songCount,
+            double length,
+            String imgUrl
+    ){
+        albumRepository.save(new Album(title, artist, songCount, length, imgUrl));
+        return new RedirectView("/album");
+    }
 }
 
-/*
+
 // Autowired will instantiate the albumRepository
 // This is an interface, an instance of JPAREpositoryInteraction that implements AlbumRepository
-@Autowired
-public AlbumRepository albumRepository;
- */
+
+
+
+
 //AlbumRepository.save() saves to database
 //list<albumList> album = albumRepository.findAll();
 //modelPotato
