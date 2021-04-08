@@ -1,9 +1,7 @@
 package com.andyagulue.songr;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /*
 1 Give your class an Entity annotation
@@ -17,6 +15,11 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+    @Column(columnDefinition="TEXT")
+
+    @OneToMany(mappedBy="albumSongs", cascade = CascadeType.ALL)
+    List<Song> song;
+
     String artist;
     String title;
     int songCount;
@@ -66,5 +69,7 @@ public class Album {
     public void setImgUrl(String imgUrl){
         this.imgUrl = imgUrl;
     }
+
+
 
 }
