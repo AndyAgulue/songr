@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="'/addSongs' + '?_method=save'" method="POST">
+    <fieldset>
+        <legend>Add A Song</legend>
+        <label for="title">Song Title</label>
+        <input type="text" name="title">
+
+        <label for="length">Song Length (Seconds)</label>
+        <input type="decimal" name="length">
+
+        <label for="trackNumber">Track Number</label>
+        <input type="number" name="songCount">
+
+<!--        <label for="imgUrl">Image url</label>-->
+<!--        <input type="text" name="imgUrl">-->
+        <input type="submit" value="Add a Song">
+    </fieldset>
+</form>
+</body>
+</html>
