@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
-<form th:action="'/addAlbum' + '?_method=save'" method="POST">
+<form th:action="'/album' + '?_method=save'" method="POST">
     <fieldset>
         <legend>Add Album</legend>
         <label for="title">Title Of Album</label>
@@ -18,7 +18,7 @@
         <label for="songCount">Number of Songs</label>
         <input type="number" name="songCount">
 
-        <label for="length">Album Length (Minutes)</label>
+        <label for="length">Album Length (Seconds)</label>
         <input type="decimal" name="length">
 
         <label for="imgUrl">Image url</label>

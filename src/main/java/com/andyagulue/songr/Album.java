@@ -23,6 +23,8 @@ public class Album {
     double length;
     String imgUrl;
 
+    public Album(){}
+
     public Album(String artist, String title, int songCount, double length, String imgUrl){
         this.artist = artist;
         this.title = title;
