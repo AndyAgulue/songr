@@ -44,13 +44,7 @@ public class  SongrController {
         return "capitalize.html";
     }
 
-    @GetMapping("/album")
-    public String viewAlbum(Model m){
-        List<Album> library = albumRepository.findAll();
-        m.addAttribute("albumList", album);
-       // m.addAttribute("albums", albumRepository.findAll());
-        return "album.html";
-    }
+
 
     @GetMapping("/")
     public String showSplash(){
@@ -59,11 +53,18 @@ public class  SongrController {
 
     @GetMapping("/addAlbum")
     public String addAlbum(){
-
+    // m.addAttribute("albums", albumRepository.findAll());
         return "addAlbum.html";
     }
 
-    @PostMapping("/addAlbum")
+    @GetMapping("/album")
+    public String viewAlbum(Model m){
+        List<Album> library = albumRepository.findAll();
+        m.addAttribute("albumList", library);
+
+        return "album.html";
+    }
+    @PostMapping("/album")
     public RedirectView addAlbum(
             String title,
             String artist,
